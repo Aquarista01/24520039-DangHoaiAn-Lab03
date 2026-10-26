@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { PADS, PAD_BY_ID } from './pads.js';
+import { PADS, PAD_BY_ID, PAD_BY_CODE } from './pads.js';
 import DrumPad from './DrumPad.jsx';
 import { useDrumAudio } from './useDrumAudio.js';
+import { useDrumKeyboard } from './useDrumKeyboard.js';
 import styles from './DrumMachine.module.css';
 
 export default function DrumMachine() {
@@ -24,6 +25,8 @@ export default function DrumMachine() {
       timerRef.current = null;
     }, 160);
   }, [play]);
+
+  useDrumKeyboard(PAD_BY_CODE, triggerPad);
 
   useEffect(() => {
     function handleBlur() {
