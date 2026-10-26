@@ -100,3 +100,70 @@ can change the results. These are not Vercel or Windows Chrome results.
 4. Repeat keyboard, touch, focus, typing suppression and audio tests.
 
 The correction audit is recorded in `AI_FAILURE_AUDIT.md`.
+
+
+---
+
+# Exercise 2 — Interactive Scientist & Pioneer Directory
+
+## Planning
+- [ ] Review existing React 19 project.
+- [ ] Protect Homework 1 on a separate branch.
+- [ ] Define data and component contracts.
+- [ ] Define acceptance tests for four milestones.
+
+## M1 — Stable Data Schema
+- [ ] Define ScientistPerson JSDoc schema.
+- [ ] Create six sample records with fixed IDs.
+- [ ] Keep source data separate from UI.
+- [ ] Verify unique IDs and field types.
+Commit: feat(ex2): normalize smartPeople schema with stable IDs
+
+## M2 — Search, Filter and Sort
+- [ ] Create ScientistDirectory component.
+- [ ] Add controlled search input.
+- [ ] Add controlled minimum IQ input.
+- [ ] Add IQ descending and age ascending sorting.
+- [ ] Compute visiblePeople during render.
+- [ ] Use toSorted without mutating source data.
+Commit: feat(ex2): add search, IQ filter & toSorted
+
+## M3 — Delete, Reset and Feedback
+- [ ] Delete by stable ID.
+- [ ] Preserve keyboard focus after deletion.
+- [ ] Reset source data and independent filter inputs.
+- [ ] Add accessible live status.
+- [ ] Handle empty results and empty directory.
+Commit: feat(ex2): add delete/reset & live status
+
+## M4 — Accessible Insert Form
+- [ ] Add controlled Name, Age and IQ fields.
+- [ ] Generate field IDs with useId.
+- [ ] Validate names and positive integer values.
+- [ ] Generate unique IDs on successful submission.
+- [ ] Insert immutably using functional updates.
+- [ ] Explain when a new record is hidden by filters.
+- [ ] Clear form errors on Reset.
+Commit: feat(ex2): add accessible person insertion form
+
+## Final Verification
+- [ ] Validate search, filters and sorting.
+- [ ] Test duplicate names with different IDs.
+- [ ] Test all invalid insertion cases.
+- [ ] Test focus and keyboard navigation.
+- [ ] Inspect React DevTools Components and Profiler.
+- [ ] Test 375px and desktop layouts.
+- [ ] Run npm run lint and npm run build.
+- [ ] Record actual outcomes.
+- [ ] Record a demonstration shorter than 60 seconds.
+
+Note: Mark a task complete only after verification.
+
+
+## Data and component contracts (before implementation)
+- ScientistPerson: stable unique string id; nonempty string name; positive integer age and iq.
+- ScientistDirectory: optional readonly initialData array, copied once as the Reset snapshot.
+- Pipeline: query and minimum IQ filter, followed by non-mutating toSorted.
+- Delete: receive an ID, remove only that record, restore focus after DOM commit.
+- Insert: trim name, validate whole positive numbers, create UUID once, append immutably.
+- Reset: restore initial data and all independent form/filter defaults.

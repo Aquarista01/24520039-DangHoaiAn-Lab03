@@ -44,3 +44,26 @@
 - Record only actual results.
 - Use AI_FAILURE_AUDIT.md only for genuine, evidenced AI failures.
 - Do not introduce unrequested deployment or reporting tasks.
+
+
+## Exercise 2 — Scientist Directory
+
+- Preserve Homework 1 and its audio assets.
+- Use React 19 functional components and automatic JSX runtime.
+- Implement ScientistDirectory in src/components/.
+- Define JSDoc data and component contracts before implementation.
+- Use stable string IDs, never array indexes as list keys.
+- Keep source data immutable.
+- Derive visiblePeople using filter() and toSorted().
+- Never use useEffect to synchronize filtered or sorted results.
+- Use controlled search, number, select and insertion inputs.
+- Read numeric fields with valueAsNumber and handle NaN.
+- Use useId for accessible form labels.
+- Restore keyboard focus after deleting a record.
+- Use one polite live status output for list changes.
+- Keep form errors in the page, not window.alert.
+- Support 375px and desktop layouts.
+- Run lint, build and manual checks before each commit.
+- Preserve the required Exercise 2 commit sequence.
+- Record only actual AI failures with supporting evidence.
+
