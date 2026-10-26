@@ -26,11 +26,11 @@ No API key, environment file or database is required.
 
 ## Exercise 2
 
-- Six sample records with fixed string IDs and JSDoc contracts in `src/components/smartPeople.js`.
-- Controlled Search, Minimum IQ (default 160) and IQ-descending/age-ascending sorting.
+- Seven initial records (six historical examples and Đặng Hoài An) with fixed string IDs and JSDoc contracts in `src/components/smartPeople.js`.
+- Controlled Search, Minimum IQ (default 0) and IQ-descending/age-ascending sorting.
 - Results are derived with filter() and ES2024 toSorted(); no synchronized results state.
 - Delete by ID, keyboard focus restoration, Reset and one polite live status.
-- Controlled Add a Person form, defaulting to Đặng Hoài An / 20 / 123 for the exercise.
+- Blank controlled Add a Person form for new records. Đặng Hoài An / 20 / 123 is already part of the initial directory.
 - Validation rejects empty names and nonpositive/noninteger Age/IQ values. useId links labels/errors.
 - Successful insertions receive UUIDs. Identical names are allowed and can be deleted independently.
 - Hidden insertions explain the active search/IQ filters; the total count still changes.
@@ -56,3 +56,11 @@ does not trigger shortcuts. A checkbox disables character shortcuts.
 
 Chrome React DevTools Components/Profiler tab screenshots remain to be captured on Windows.
 The JSON API measurement does not claim to be an extension recording.
+
+
+## Exercise 2 correction — 26 October 2026
+
+Đặng Hoài An (age 20, exercise IQ 123, stable ID sp-7) now appears in the initial
+seven-record directory. Minimum IQ starts and resets at 0 so this record is visible.
+The Add a Person fields start and reset empty; Reset restores the seven seeded records.
+Earlier demonstration/profile files document the previous six-record defaults.

@@ -53,5 +53,11 @@ export const SMART_PEOPLE = Object.freeze([
     age: 46,
     iq: 200,
   },
+  {
+    id: 'sp-7',
+    name: 'Đặng Hoài An',
+    age: 20,
+    iq: 123,
+  },
 ]);
 

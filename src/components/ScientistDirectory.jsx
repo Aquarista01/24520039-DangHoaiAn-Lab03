@@ -16,7 +16,7 @@ export default function ScientistDirectory({ initialData = SMART_PEOPLE }) {
     initialSnapshot.map((person) => ({ ...person })),
   );
   const [query, setQuery] = useState('');
-  const [minIq, setMinIq] = useState(160);
+  const [minIq, setMinIq] = useState(0);
   const [sortBy, setSortBy] = useState('iq-desc');
 
   const [notice, setNotice] = useState('');
@@ -56,9 +56,9 @@ export default function ScientistDirectory({ initialData = SMART_PEOPLE }) {
   const ageErrorId = `${ageInputId}-error`;
   const iqErrorId = `${iqInputId}-error`;
 
-  const [formName, setFormName] = useState('Đặng Hoài An');
-  const [formAge, setFormAge] = useState(20);
-  const [formIq, setFormIq] = useState(123);
+  const [formName, setFormName] = useState('');
+  const [formAge, setFormAge] = useState('');
+  const [formIq, setFormIq] = useState('');
 
   const [formErrors, setFormErrors] = useState({
     name: '',
@@ -119,13 +119,13 @@ export default function ScientistDirectory({ initialData = SMART_PEOPLE }) {
     setPeople(initialSnapshot.map((person) => ({ ...person })));
 
     setQuery('');
-    setMinIq(160);
+    setMinIq(0);
     setSortBy('iq-desc');
     setNotice('');
 
-    setFormName('Đặng Hoài An');
-    setFormAge(20);
-    setFormIq(123);
+    setFormName('');
+    setFormAge('');
+    setFormIq('');
 
     setFormErrors({
       name: '',
