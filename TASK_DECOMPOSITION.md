@@ -325,3 +325,18 @@ Runtime: Node.js 24.22.1, npm 11.9.0, React/React DOM 19.3.1, Vite 8.3.5.
 The two required implementation commits were completed in order, followed by a separate
 verification documentation commit. No new observed product defect required an AI failure
 entry for Exercise 3; the earlier audit remains unchanged.
+
+
+## Exercise 2 correction — 26 October 2026
+
+User clarification: Đặng Hoài An belongs in the initial directory, rather than being
+pre-filled into Add a Person. The current baseline supersedes the earlier six-record,
+minimum-IQ-160, prefilled-form instructions above.
+
+- [x] Seed Đặng Hoài An / age 20 / exercise IQ 123 with stable ID sp-7.
+- [x] Start and reset Minimum IQ to 0; show all seven records immediately.
+- [x] Start and reset Name, Age and IQ insertion fields empty.
+- [x] Verify filter behavior, deletion/Reset, new insertion, validation, Unicode search and age sorting.
+- [x] Run lint and production build successfully.
+
+Earlier recorded videos and Profiler data remain historical measurements of the pre-correction version.
