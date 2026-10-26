@@ -107,55 +107,56 @@ The correction audit is recorded in `AI_FAILURE_AUDIT.md`.
 # Exercise 2 — Interactive Scientist & Pioneer Directory
 
 ## Planning
-- [ ] Review existing React 19 project.
-- [ ] Protect Homework 1 on a separate branch.
-- [ ] Define data and component contracts.
-- [ ] Define acceptance tests for four milestones.
+- [x] Review existing React 19 project.
+- [x] Protect Homework 1 on a separate branch.
+- [x] Define data and component contracts.
+- [x] Define acceptance tests for four milestones.
 
 ## M1 — Stable Data Schema
-- [ ] Define ScientistPerson JSDoc schema.
-- [ ] Create six sample records with fixed IDs.
-- [ ] Keep source data separate from UI.
-- [ ] Verify unique IDs and field types.
+- [x] Define ScientistPerson JSDoc schema.
+- [x] Create six sample records with fixed IDs.
+- [x] Keep source data separate from UI.
+- [x] Verify unique IDs and field types.
 Commit: feat(ex2): normalize smartPeople schema with stable IDs
 
 ## M2 — Search, Filter and Sort
-- [ ] Create ScientistDirectory component.
-- [ ] Add controlled search input.
-- [ ] Add controlled minimum IQ input.
-- [ ] Add IQ descending and age ascending sorting.
-- [ ] Compute visiblePeople during render.
-- [ ] Use toSorted without mutating source data.
+- [x] Create ScientistDirectory component.
+- [x] Add controlled search input.
+- [x] Add controlled minimum IQ input.
+- [x] Add IQ descending and age ascending sorting.
+- [x] Compute visiblePeople during render.
+- [x] Use toSorted without mutating source data.
 Commit: feat(ex2): add search, IQ filter & toSorted
 
 ## M3 — Delete, Reset and Feedback
-- [ ] Delete by stable ID.
-- [ ] Preserve keyboard focus after deletion.
-- [ ] Reset source data and independent filter inputs.
-- [ ] Add accessible live status.
-- [ ] Handle empty results and empty directory.
+- [x] Delete by stable ID.
+- [x] Preserve keyboard focus after deletion.
+- [x] Reset source data and independent filter inputs.
+- [x] Add accessible live status.
+- [x] Handle empty results and empty directory.
 Commit: feat(ex2): add delete/reset & live status
 
 ## M4 — Accessible Insert Form
-- [ ] Add controlled Name, Age and IQ fields.
-- [ ] Generate field IDs with useId.
-- [ ] Validate names and positive integer values.
-- [ ] Generate unique IDs on successful submission.
-- [ ] Insert immutably using functional updates.
-- [ ] Explain when a new record is hidden by filters.
-- [ ] Clear form errors on Reset.
+- [x] Add controlled Name, Age and IQ fields.
+- [x] Generate field IDs with useId.
+- [x] Validate names and positive integer values.
+- [x] Generate unique IDs on successful submission.
+- [x] Insert immutably using functional updates.
+- [x] Explain when a new record is hidden by filters.
+- [x] Clear form errors on Reset.
 Commit: feat(ex2): add accessible person insertion form
 
 ## Final Verification
-- [ ] Validate search, filters and sorting.
-- [ ] Test duplicate names with different IDs.
-- [ ] Test all invalid insertion cases.
-- [ ] Test focus and keyboard navigation.
-- [ ] Inspect React DevTools Components and Profiler.
-- [ ] Test 375px and desktop layouts.
-- [ ] Run npm run lint and npm run build.
-- [ ] Record actual outcomes.
-- [ ] Record a demonstration shorter than 60 seconds.
+- [x] Validate search, filters and sorting.
+- [x] Test duplicate names with different IDs.
+- [x] Test all invalid insertion cases.
+- [x] Test focus and keyboard navigation.
+- [ ] Inspect Chrome React DevTools Components and Profiler tabs on Windows.
+- [x] Measure a search update with the React Profiler API (separate automated evidence).
+- [x] Test 375px and desktop layouts.
+- [x] Run npm run lint and npm run build.
+- [x] Record actual outcomes.
+- [x] Record a demonstration shorter than 60 seconds.
 
 Note: Mark a task complete only after verification.
 
@@ -167,3 +168,46 @@ Note: Mark a task complete only after verification.
 - Delete: receive an ID, remove only that record, restore focus after DOM commit.
 - Insert: trim name, validate whole positive numbers, create UUID once, append immutably.
 - Reset: restore initial data and all independent form/filter defaults.
+
+
+## Exercise 2 — Actual verification (26 October 2026)
+
+Target: Vite production preview at http://127.0.0.1:4173/.
+Runtime: Node 24.22.1, npm 11.9.0, React/React DOM 19.3.1,
+Vite 8.3.5 and Chromium Headless 153.0.8010.0.
+
+- M1: six unique fixed IDs and correct string/integer schema; lint/build passed.
+- M2: trimmed, case-insensitive search; combined IQ filtering; clearing Minimum IQ to 0;
+  both sort modes including the IQ 190 tie; no-match state; lint/build passed.
+- M3: deleting while searching and sorting removes the intended stable ID; next, previous
+  and Reset focus targets passed; deleting all records and Reset passed; lint/build passed.
+- M4: default demo record inserted with the IQ-hidden reason; search-hidden and combined
+  reasons passed; duplicate names have independent UUIDs and can be deleted separately;
+  native Enter submission passed; whitespace names, empty/zero/negative/decimal Age/IQ
+  values were rejected with linked field errors; Reset clears form/errors; lint/build passed.
+- A 200-character unbroken name does not overflow at 375px after the status wrapping fix.
+- Responsive widths 320, 375, 768, 1024 and 1440px: no horizontal overflow.
+- axe WCAG 2 A/AA, 2.1 A/AA and 2.2 AA tags: no violations on the final directory.
+- Drum Kit button playback feedback and switching between activities passed.
+- Desktop and 375px screenshots were visually inspected; no uncaught browser page errors.
+- React Profiler API in a temporary development StrictMode harness: one update commit
+  for changing Search to E; actualDuration about 3.2ms in this run. Original dataset
+  remained six records. See verification/ex2-profiler.json for the measured events.
+
+### Evidence and remaining user steps
+
+`verification/ex2-demo.mp4` records actual automated UI interactions in the production
+browser: insertion, hidden-record status, filters, sorting, deletion, reset and validation.
+It has no narration and does not show the React DevTools extension.
+
+Chrome React DevTools Components/Profiler tabs were not available in the automated browser.
+On Windows, run `npm run dev`, select Exercise 2, inspect ScientistDirectory in Components,
+then record typing E in Profiler. Use that view if the teacher requires the extension
+in the submitted video; the API measurement is supporting evidence, not a substitute
+for an extension screenshot. Full screen-reader testing remains manual.
+
+All directory data is in memory. Switching activities remounts the component and resets
+its state. No deployment or database was added.
+
+Recorded automated demonstration duration: 24.72 seconds (ffprobe).
+Original seven DrumMachine source files were SHA-checked against the Homework 1 branch and remain identical.

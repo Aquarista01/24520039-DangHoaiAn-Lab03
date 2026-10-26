@@ -1,20 +1,20 @@
-# Lab 03 — Homework 1
+# Lab 03 — React Activities
 
 Đặng Hoài An · 24520039 · Web Application Development
 
-Production Studio Drum Kit using React 19, Vite, functional components,
-custom hooks and CSS Modules. Seven original Lab 1 sounds are reused.
+This branch includes Homework 1 (Production Studio Drum Kit) and Exercise 2
+(Interactive Scientist & Pioneer Directory). Use the activity buttons at the top.
 
 ## Run locally
 
-Use Node.js 24 and npm. From the project folder:
+Use Node.js 24 and npm. From this project folder:
 
 ```sh
 npm ci
 npm run dev
 ```
 
-For production verification:
+Open the local address printed by Vite. To check the production build:
 
 ```sh
 npm run lint
@@ -22,30 +22,37 @@ npm run build
 npm run preview
 ```
 
-Open the local URL printed by Vite. No database, API key or environment file is needed.
+No API key, environment file or database is required.
 
-## Controls
+## Exercise 2
 
-| Key | Instrument |
-| --- | --- |
-| W | Kick |
-| A | Snare |
-| S | Clap |
-| D | Closed Hat |
-| J | Rimshot |
-| K | Shaker |
-| L | Crash |
+- Six sample records with fixed string IDs and JSDoc contracts in `src/components/smartPeople.js`.
+- Controlled Search, Minimum IQ (default 160) and IQ-descending/age-ascending sorting.
+- Results are derived with filter() and ES2024 toSorted(); no synchronized results state.
+- Delete by ID, keyboard focus restoration, Reset and one polite live status.
+- Controlled Add a Person form, defaulting to Đặng Hoài An / 20 / 123 for the exercise.
+- Validation rejects empty names and nonpositive/noninteger Age/IQ values. useId links labels/errors.
+- Successful insertions receive UUIDs. Identical names are allowed and can be deleted independently.
+- Hidden insertions explain the active search/IQ filters; the total count still changes.
+- IQ values are exercise data, not independently verified measurements.
+- Data is in memory; switching activities remounts them and resets their state.
 
-Click or tap a pad, or use its shortcut. Tab focuses controls; Enter and Space
-activate buttons. Shortcuts ignore editable fields, modifiers and held-key repeats.
-The checkbox can disable character shortcuts. Recent Hits keeps the last six hits;
-the meter shows illustrative intensity, not measured decibels.
+The branch `ex2-scientist-directory` inherits Homework 1 and has separate planning,
+data, filtering/sorting, deletion/reset, insertion and final-verification commits.
 
-## Implementation and evidence
+## Homework 1
 
-- `src/homeworks/DrumMachine/`: pad component, audio hook, keyboard hook and feedback.
-- `project-rules.md` and `TASK_DECOMPOSITION.md`: contracts-first milestones and checks.
-- `verification/lighthouse-results.json`: measured local production audit extracts.
-- `AI_FAILURE_AUDIT.md`: evidenced defects and corrections found during verification.
+The original DrumMachine source and seven Lab 1 sounds are preserved. Click/tap pads
+or use W/A/S/D/J/K/L. Enter/Space activate focused buttons; typing in the test field
+does not trigger shortcuts. A checkbox disables character shortcuts.
 
-The branch `hw1-production-drum-kit` contains M0–M4 plus a separate correction commit.
+## Verification
+
+- `TASK_DECOMPOSITION.md`: per-milestone acceptance tests and actual outcomes.
+- `verification/ex2-profiler.json`: real React Profiler API events for one search update.
+- `verification/ex2-demo.mp4`: short, actual automated browser demonstration.
+- `verification/lighthouse-results.json`: earlier Homework 1 measurements, not an Exercise 2 audit.
+- `AI_FAILURE_AUDIT.md`: actual defects caught and corrected during implementation.
+
+Chrome React DevTools Components/Profiler tab screenshots remain to be captured on Windows.
+The JSON API measurement does not claim to be an extension recording.

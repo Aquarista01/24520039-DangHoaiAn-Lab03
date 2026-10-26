@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-26",
+  "target": "http://127.0.0.1:4173/",
+  "browser": "Chromium Headless 153.0.8010.0",
+  "checks": {
+    "schema": "passed",
+    "searchAndFilter": "passed",
+    "nonMutatingSorting": "passed",
+    "deleteAndResetFocus": "passed",
+    "uuidDuplicateNames": "passed",
+    "invalidInsertionCases": 9,
+    "responsiveWidths": [
+      320,
+      375,
+      768,
+      1024,
+      1440
+    ],
+    "longUnbrokenNameLength": 200,
+    "axeWcagViolations": 0,
+    "lint": "passed",
+    "productionBuild": "passed",
+    "originalDrumKitSourceFilesPreserved": 7,
+    "demoDurationSeconds": 24.72
+  },
+  "remainingManual": [
+    "Chrome React DevTools Components/Profiler tabs on Windows",
+    "Human screen-reader evaluation"
+  ],
+  "profilerEvidence": "ex2-profiler.json",
+  "demo": "ex2-demo.mp4"
+}

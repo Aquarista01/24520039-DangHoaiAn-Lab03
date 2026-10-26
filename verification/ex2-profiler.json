@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-26T08:53:19.221Z",
+  "browser": "153.0.8010.0",
+  "environment": "Vite development with StrictMode; temporary React.Profiler wrapper around the actual ScientistDirectory component",
+  "limitation": "This uses the React Profiler API, not the Chrome React DevTools extension; Components/Profiler tab inspection remains manual.",
+  "action": "Fill Search by name with one character E",
+  "initialEvents": [
+    {
+      "id": "ScientistDirectory",
+      "phase": "mount",
+      "actualDuration": 14.400000000372529,
+      "baseDuration": 8.399999998509884,
+      "startTime": 336.79999999981374,
+      "commitTime": 352.19999999925494
+    }
+  ],
+  "searchEvents": [
+    {
+      "id": "ScientistDirectory",
+      "phase": "update",
+      "actualDuration": 3.2000000001862645,
+      "baseDuration": 3.099999999627471,
+      "startTime": 510,
+      "commitTime": 513.2999999998137
+    }
+  ],
+  "searchCommitCount": 1,
+  "sourceRecordCount": 6
+}
