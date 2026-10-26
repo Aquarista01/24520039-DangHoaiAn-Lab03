@@ -14,7 +14,7 @@ export default function DrumPad({
         type="button"
         className={`${styles.pad} ${isActive ? styles.active : ''}`}
         aria-pressed={isActive}
-        aria-label={`${pad.name}, keyboard shortcut ${pad.keyLabel}`}
+        aria-keyshortcuts={pad.keyLabel.toLowerCase()}
         onClick={() => onTrigger(pad.id)}
       >
         <kbd className={styles.padKey}>{pad.keyLabel}</kbd>
