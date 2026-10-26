@@ -136,3 +136,113 @@
     transform: none;
   }
 }
+
+.feedback {
+  margin-top: 20px;
+  padding: clamp(16px, 3vw, 30px);
+  border: 1px solid #60748f;
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.feedback h2 {
+  margin-top: 0;
+}
+
+.feedback h3 {
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+.liveOutput {
+  display: block;
+  padding: 12px;
+  border-radius: 8px;
+  background: #253653;
+  font-weight: 700;
+}
+
+.history {
+  padding-left: 24px;
+  line-height: 1.9;
+}
+
+.history:empty {
+  display: none;
+}
+
+.meterNote {
+  color: var(--muted);
+}
+
+.meter {
+  width: 100%;
+  height: 24px;
+  margin-top: 16px;
+  overflow: hidden;
+  border: 2px solid #8194ae;
+  border-radius: 8px;
+  background: #101827;
+}
+
+.meterFill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: #93c5fd;
+  transition: width 120ms ease-out;
+}
+
+.meterValue {
+  font-weight: 700;
+}
+
+.inputGroup {
+  display: grid;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.inputGroup label {
+  font-weight: 700;
+}
+
+.inputGroup input {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px;
+  border: 2px solid #8194ae;
+  border-radius: 8px;
+  background: #101827;
+  color: var(--text);
+}
+
+.inputGroup p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meterFill {
+    transition: none;
+  }
+}
+
+.shortcutToggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.shortcutToggle input {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  accent-color: var(--accent);
+}
