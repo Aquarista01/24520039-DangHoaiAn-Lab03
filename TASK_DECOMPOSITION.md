@@ -218,50 +218,110 @@ Original seven DrumMachine source files were SHA-checked against the Homework 1 
 # Exercise 3 — KRAFTON PUBG Vietnam Series Telemetry
 
 ## Planning and Contracts
-- [ ] Review Lab 03 and preserve previous activities.
-- [ ] Define TelemetryData and machine-state contracts.
-- [ ] Define HTTP, abort and simulation behavior.
-- [ ] Define isolated acceptance tests.
+- [x] Review Lab 03 and preserve previous activities.
+- [x] Define TelemetryData and machine-state contracts.
+- [x] Define HTTP, abort and simulation behavior.
+- [x] Define isolated acceptance tests.
 
 ## M1 — Four-State Telemetry and Cancellation
-- [ ] Create three local JSON datasets.
-- [ ] Implement abortable telemetry service.
-- [ ] Configure normal failure probability as 35%.
-- [ ] Validate squad ID and response data.
-- [ ] Implement IDLE/LOADING/SUCCESS/ERROR machine.
-- [ ] Use AbortController inside useEffect.
-- [ ] Cancel old requests on squad change/unmount.
-- [ ] Add CES/TE/GE selector with TE default.
-- [ ] Render minimal status/data/error UI.
-- [ ] Verify switching and cleanup.
+- [x] Create three local JSON datasets.
+- [x] Implement abortable telemetry service.
+- [x] Configure normal failure probability as 35%.
+- [x] Validate squad ID and response data.
+- [x] Implement IDLE/LOADING/SUCCESS/ERROR machine.
+- [x] Use AbortController inside useEffect.
+- [x] Cancel old requests on squad change/unmount.
+- [x] Add CES/TE/GE selector with TE default.
+- [x] Render minimal status/data/error UI.
+- [x] Verify switching and cleanup.
 
 Commit: feat(ex3): implement PUBG VN 4-state telemetry & AbortController
 
 ## M2 — Skeleton, Error and Retry
-- [ ] Add 220px Blue-Zone radar skeleton.
-- [ ] Add loading announcement and aria-busy.
-- [ ] Support prefers-reduced-motion.
-- [ ] Add role=alert error section.
-- [ ] Add Reconnect Satellite button.
-- [ ] Use functional retryTick update.
-- [ ] Preserve selector availability while loading.
-- [ ] Show SUCCESS using semantic article and dl.
-- [ ] Verify focus, contrast and 375px layout.
-- [ ] Verify retry success and repeated errors.
+- [x] Add 220px Blue-Zone radar skeleton.
+- [x] Add loading announcement and aria-busy.
+- [x] Support prefers-reduced-motion.
+- [x] Add role=alert error section.
+- [x] Add Reconnect Satellite button.
+- [x] Use functional retryTick update.
+- [x] Preserve selector availability while loading.
+- [x] Show SUCCESS using semantic article and dl.
+- [x] Verify focus, contrast and 375px layout.
+- [x] Verify retry success and repeated errors.
 
 Commit: feat(ex3): add skeleton UI & retry alert
 
 ## Final Verification
-- [ ] Verify CES, TE and GE data.
-- [ ] Verify simulated errors and retry.
-- [ ] Verify rapid squad switching and stale-response prevention.
-- [ ] Verify abort during pending HTTP fetch.
-- [ ] Verify abort during simulated delay.
-- [ ] Verify unmount cleanup and StrictMode behavior.
-- [ ] Inspect Chrome Network and React DevTools.
-- [ ] Check mobile 375px and desktop layout.
-- [ ] Check Console, lint and production build.
-- [ ] Record actual test results and remaining issues.
+- [x] Verify CES, TE and GE data.
+- [x] Verify simulated errors and retry.
+- [x] Verify rapid squad switching and stale-response prevention.
+- [x] Verify abort during pending HTTP fetch.
+- [x] Verify abort during simulated delay.
+- [x] Verify unmount cleanup and StrictMode behavior.
+- [ ] Capture Chrome Network and React DevTools tabs on Windows.
+- [x] Observe native HTTP cancellation through Chromium CDP network events.
+- [x] Check mobile 375px and desktop layout.
+- [x] Check Console, lint and production build.
+- [x] Record actual test results and remaining issues.
 
 Only mark tests as completed after running them.
 
+
+
+## Exercise 3 — Final Verification
+
+Date: 26 October 2026
+Browser: Chromium Headless 153.0.8010.0 (local automated browser)
+Production target: http://127.0.0.1:4173/
+Development target: http://127.0.0.1:4174/
+Runtime: Node.js 24.22.1, npm 11.9.0, React/React DOM 19.3.1, Vite 8.3.5.
+
+### Automated service checks
+- `node --test verification/ex3-service.test.mjs`: 11 passed, 0 failed.
+- Actual pending fetch and already-aborted signal: AbortError passed through correctly.
+- Active simulated delay: aborted after its listener was installed; listener removed.
+- HTTP 404, malformed JSON, wrong-squad/invalid data and invalid options: rejected.
+- Default 35% failure boundary checked deterministically at random values 0.349 and 0.35.
+- `npm run lint` and `npm run build`: passed.
+
+### Browser checks
+- TE was selected by default; CES/TE/GE JSON data and transitions passed.
+- Previous data is removed during LOADING; obsolete work never replaced the latest squad.
+- HTTP cancellation: observed on actual native fetch while CDP network latency was enabled.
+  The browser emitted a canceled loadingFailed event before the response completed.
+- Simulated-delay cancellation: observed separately after HTTP 200, before the 1400ms work finished.
+- Unmount/remount cleanup: passed. Development StrictMode produced its expected repeated
+  setup/cleanup cycle; all six observed request controllers were aborted after final unmount.
+- ERROR, repeated simulated errors, offline errors, repeated Retry, online recovery and
+  squad switching during Retry: passed. Randomness was overridden only in the test browser.
+- Production source retains delayMs=1400 and failureRate=0.35. No test mode was added to the UI.
+- Loading skeleton min-height >=220px; selector stays enabled; aria-busy and reduced-motion passed.
+- One error alert without a competing error live-status message; semantic article/dl stats passed.
+- Retry Enter/Space activation and native select keyboard navigation passed. Focus stays on a
+  stable main element while Retry disappears, avoiding a drop to the document body.
+- SUCCESS, ERROR and LOADING: no horizontal overflow at 320/375/768/1024/1440px.
+- axe tags WCAG 2 A/AA, 2.1 A/AA, 2.2 AA: no reported violations in these three states.
+- Desktop/mobile success, loading and error screenshots were visually inspected.
+- No uncaught page errors. Expected network errors during intentional Offline tests are distinct
+  from application exceptions.
+
+### Existing activity regression
+- All seven original WAVs emitted real playing events.
+- Drum shortcuts, hold suppression, modifiers, Enter/Space, editable targets and blur recovery passed.
+- Exercise 2 search/filter/sort, Delete/Reset, focus, insertion, duplicate names, validation,
+  long names and responsive/accessibility checks passed again.
+- Ten previous activity source files and seven original WAVs (17 files) are byte-identical
+  to the pre-Exercise-3 snapshot. main and the earlier activity branches were not updated.
+
+### Evidence and remaining manual checks
+- `verification/ex3-browser-checks.json`: actual network cancellation records and browser checks.
+- `verification/ex3-strictmode.json`: actual development lifecycle observations.
+- Chrome React DevTools Components/Network tab screenshots were not captured in the user's
+  Windows browser. CDP observations are machine evidence, not a screenshot of those tabs.
+- A Chrome Performance layout-shift trace and human screen-reader review remain manual.
+  No numeric CLS score or full WCAG certification is claimed.
+- No video was requested for Exercise 3, so no Exercise 3 video was created.
+
+The two required implementation commits were completed in order, followed by a separate
+verification documentation commit. No new observed product defect required an AI failure
+entry for Exercise 3; the earlier audit remains unchanged.

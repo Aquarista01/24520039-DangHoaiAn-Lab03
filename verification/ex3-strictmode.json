@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-26T10:41:04.977Z",
+  "browser": "153.0.8010.0",
+  "mode": "Vite development + real React StrictMode",
+  "requests": [
+    {
+      "url": "/telemetry/te.json",
+      "aborted": true,
+      "httpDone": false
+    },
+    {
+      "url": "/telemetry/te.json",
+      "aborted": true,
+      "httpDone": true
+    },
+    {
+      "url": "/telemetry/ge.json",
+      "aborted": true,
+      "httpDone": false
+    },
+    {
+      "url": "/telemetry/ge.json",
+      "aborted": true,
+      "httpDone": true
+    },
+    {
+      "url": "/telemetry/ge.json",
+      "aborted": true,
+      "httpDone": false
+    },
+    {
+      "url": "/telemetry/ge.json",
+      "aborted": true,
+      "httpDone": true
+    }
+  ],
+  "errors": [],
+  "checks": [
+    "first setup cleaned before repeated setup",
+    "single active instance after remount",
+    "all controllers aborted after unmount",
+    "no stale data or uncaught page errors"
+  ],
+  "testMethod": "Actual local Chromium browser automated with Playwright/CDP. Math.random was controlled only inside the test browser; production failureRate remains 0.35."
+}

@@ -2,8 +2,9 @@
 
 Đặng Hoài An · 24520039 · Web Application Development
 
-This branch includes Homework 1 (Production Studio Drum Kit) and Exercise 2
-(Interactive Scientist & Pioneer Directory). Use the activity buttons at the top.
+This branch includes Homework 1 (Production Studio Drum Kit), Exercise 2
+(Interactive Scientist & Pioneer Directory) and Exercise 3 (PUBG VN Telemetry).
+Use the three activity buttons at the top.
 
 ## Run locally
 
@@ -56,3 +57,35 @@ does not trigger shortcuts. A checkbox disables character shortcuts.
 
 Chrome React DevTools Components/Profiler tab screenshots remain to be captured on Windows.
 The JSON API measurement does not claim to be an extension recording.
+
+
+## Exercise 3 — PUBG VN Telemetry
+
+Select **Exercise 3 — PUBG Telemetry**. The Expendables (TE) is selected initially;
+use Select PUBG Squad to switch to Cerberus Esports (CES) or Genius Esports (GE).
+
+This is simulated educational data, not an official KRAFTON live feed. Each call
+fetches a local JSON file over HTTP, waits an additional abortable 1400ms and has
+35% simulated packet-loss probability. Blue-Zone Link Lost can therefore be expected;
+Reconnect Satellite starts a new attempt without reloading the page.
+
+- One useReducer machine: IDLE, LOADING, SUCCESS, ERROR.
+- AbortController and obsolete-callback guards cancel work on squad changes/unmount.
+- A keyed telemetry component clears previous squad data immediately.
+- Loading radar, semantic match statistics, one error alert, Retry and reduced-motion support.
+- No added application dependencies, API key, server/database or environment file.
+
+Run service tests from the project folder:
+
+```sh
+node --test verification/ex3-service.test.mjs
+```
+
+The branch `ex3-pubg-telemetry` inherits Ex2. It contains the two required feature
+commits plus final verification documentation. See `TASK_DECOMPOSITION.md`,
+`verification/ex3-browser-checks.json` and `verification/ex3-strictmode.json`.
+
+To capture optional Windows evidence: open Network with slow throttling, switch squads
+while a JSON request is pending, and inspect PubgMatchTelemetry in React DevTools Components.
+An HTTP response already marked 200 can still have its simulated delay aborted; that does
+not mean the completed HTTP request was canceled.

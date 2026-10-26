@@ -1,0 +1,171 @@
+{
+  "browser": "153.0.8010.0",
+  "network": [
+    {
+      "url": "http://127.0.0.1:4173/telemetry/ces.json",
+      "canceled": true,
+      "errorText": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:4173/telemetry/te.json",
+      "canceled": true,
+      "errorText": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:4173/telemetry/te.json",
+      "canceled": false,
+      "errorText": "net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "url": "http://127.0.0.1:4173/telemetry/te.json",
+      "canceled": false,
+      "errorText": "net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "url": "http://127.0.0.1:4173/telemetry/ces.json",
+      "canceled": true,
+      "errorText": "net::ERR_ABORTED"
+    }
+  ],
+  "delayedAbort": true,
+  "fetchLog": [
+    {
+      "url": "/telemetry/te.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/ces.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/ge.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/ces.json",
+      "httpDone": false,
+      "aborted": true,
+      "fetchError": "AbortError"
+    },
+    {
+      "url": "/telemetry/te.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/ces.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/ge.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/te.json",
+      "httpDone": false,
+      "aborted": true,
+      "fetchError": "AbortError"
+    },
+    {
+      "url": "/telemetry/te.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/ces.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/ces.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/ces.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/te.json",
+      "httpDone": false,
+      "aborted": true,
+      "fetchError": "TypeError"
+    },
+    {
+      "url": "/telemetry/te.json",
+      "httpDone": false,
+      "aborted": true,
+      "fetchError": "TypeError"
+    },
+    {
+      "url": "/telemetry/te.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/ge.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/te.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/te.json",
+      "httpDone": true,
+      "aborted": true,
+      "httpStatus": 200
+    },
+    {
+      "url": "/telemetry/ces.json",
+      "httpDone": false,
+      "aborted": true,
+      "fetchError": "AbortError"
+    },
+    {
+      "url": "/telemetry/te.json",
+      "httpDone": true,
+      "aborted": false,
+      "httpStatus": 200
+    }
+  ],
+  "errors": [],
+  "testMethod": "Actual local Chromium browser automated with Playwright/CDP. Math.random was controlled only inside the test browser; production failureRate remains 0.35.",
+  "passedChecks": [
+    "three squad JSON datasets",
+    "default TE",
+    "native pending HTTP cancellation observed by CDP",
+    "abort after HTTP 200 during simulated delay",
+    "latest selected squad retained",
+    "unmount and remount cleanup",
+    "repeated simulated errors and retry",
+    "offline retry and recovery",
+    "keyboard select and Enter/Space retry",
+    "focus stays on stable main while retry button is removed",
+    "LOADING/SUCCESS/ERROR no overflow at 320/375/768/1024/1440px",
+    "skeleton min-height 220px",
+    "reduced motion",
+    "zero axe WCAG tagged violations"
+  ]
+}
