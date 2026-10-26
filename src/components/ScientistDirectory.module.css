@@ -137,3 +137,47 @@
   }
 }
 
+
+
+.resetRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.actionButton,
+.deleteButton {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 2px solid #a9bcdb;
+  border-radius: 9px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.actionButton {
+  background: #254e73;
+  color: #ffffff;
+}
+
+.deleteButton {
+  background: #783435;
+  color: #ffffff;
+}
+
+.actionButton:hover {
+  background: #35688f;
+}
+
+.deleteButton:hover {
+  background: #944143;
+}
+
+.recordId {
+  display: block;
+  margin-top: 12px;
+  color: #cbd5e1;
+  overflow-wrap: anywhere;
+}
+

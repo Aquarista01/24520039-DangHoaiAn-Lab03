@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useId, useLayoutEffect, useRef, useState } from 'react';
 import { SMART_PEOPLE } from './smartPeople.js';
 import styles from './ScientistDirectory.module.css';
 
@@ -14,12 +14,37 @@ export default function ScientistDirectory({
   );
 
   // Independent source and input states.
-  const [people] = useState(() =>
+  const [people, setPeople] = useState(() =>
     initialSnapshot.map((person) => ({ ...person }))
   );
   const [query, setQuery] = useState('');
   const [minIq, setMinIq] = useState(160);
   const [sortBy, setSortBy] = useState('iq-desc');
+
+const [notice, setNotice] = useState('');
+
+const deleteButtonsRef = useRef(new Map());
+const resetButtonRef = useRef(null);
+const pendingFocusRef = useRef(null);
+
+// Restore focus only after a deletion changes the DOM.
+useLayoutEffect(() => {
+  const request = pendingFocusRef.current;
+  if (!request) return;
+
+  pendingFocusRef.current = null;
+
+  if (request.nextId) {
+    const nextButton = deleteButtonsRef.current.get(request.nextId);
+
+    if (nextButton) {
+      nextButton.focus();
+      return;
+    }
+  }
+
+  resetButtonRef.current?.focus();
+}, [people]);
 
   const searchId = useId();
   const minIqId = useId();
@@ -51,6 +76,46 @@ export default function ScientistDirectory({
       );
     });
 
+function handleDelete(id) {
+  const currentIndex = visiblePeople.findIndex(
+    (person) => person.id === id
+  );
+
+  if (currentIndex === -1) return;
+
+  const deletedPerson = visiblePeople[currentIndex];
+
+  // Focus the next visible Delete button, or the previous one.
+  const nextPerson =
+    visiblePeople[currentIndex + 1] ??
+    visiblePeople[currentIndex - 1];
+
+  pendingFocusRef.current = {
+    nextId: nextPerson?.id ?? null,
+  };
+
+  setPeople((previous) =>
+    previous.filter((person) => person.id !== id)
+  );
+
+  setNotice(`Deleted ${deletedPerson.name}.`);
+}
+
+function handleReset() {
+  pendingFocusRef.current = null;
+
+  setPeople(
+    initialSnapshot.map((person) => ({ ...person }))
+  );
+
+  setQuery('');
+  setMinIq(160);
+  setSortBy('iq-desc');
+  setNotice('');
+
+  resetButtonRef.current?.focus();
+}
+
   return (
     <main className={styles.shell} id="scientist-main">
       <header className={styles.header}>
@@ -76,7 +141,10 @@ export default function ScientistDirectory({
               id={searchId}
               type="search"
               value={query}
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={(event) => {
+  setQuery(event.target.value);
+  setNotice('');
+}}
               placeholder="Search a scientist..."
             />
           </div>
@@ -92,6 +160,7 @@ export default function ScientistDirectory({
               value={minIq}
               onChange={(event) => {
                 const value = event.target.valueAsNumber;
+                setNotice('');
 
                 setMinIq(
                   Number.isFinite(value)
@@ -108,13 +177,26 @@ export default function ScientistDirectory({
             <select
               id={sortId}
               value={sortBy}
-              onChange={(event) => setSortBy(event.target.value)}
+              onChange={(event) => {
+  setSortBy(event.target.value);
+  setNotice('');
+}}
             >
               <option value="iq-desc">IQ: High to Low</option>
               <option value="age-asc">Age: Low to High</option>
             </select>
           </div>
         </div>
+      <div className={styles.resetRow}>
+  <button
+    ref={resetButtonRef}
+    type="button"
+    className={styles.actionButton}
+    onClick={handleReset}
+  >
+    Reset Directory
+  </button>
+</div>
       </section>
 
       <section className={styles.panel} aria-labelledby="results-title">
@@ -126,10 +208,12 @@ export default function ScientistDirectory({
           aria-live="polite"
           aria-atomic="true"
         >
-          {visiblePeople.length} result(s) found.
+          {notice ? `${notice} ${visiblePeople.length} result(s) shown.` : `${visiblePeople.length} result(s) found.`}
         </output>
 
-        {visiblePeople.length === 0 ? (
+        {people.length === 0 ? (
+          <p className={styles.empty}>The directory is empty. Use Reset Directory to restore it.</p>
+        ) : visiblePeople.length === 0 ? (
           <p className={styles.empty}>
             No people match the current search and IQ filter.
           </p>
@@ -137,12 +221,32 @@ export default function ScientistDirectory({
           <ul className={styles.peopleList}>
             {visiblePeople.map((person) => (
               <li key={person.id} className={styles.personCard}>
-                <div className={styles.personDetails}>
-                  <h3>{person.name}</h3>
-                  <p>Age: {person.age}</p>
-                  <p>IQ: {person.iq}</p>
-                </div>
-              </li>
+  <div className={styles.personDetails}>
+    <h3>{person.name}</h3>
+    <p>Age: {person.age}</p>
+    <p>IQ: {person.iq}</p>
+
+    <small className={styles.recordId}>
+      Record ID: {person.id}
+    </small>
+  </div>
+
+  <button
+    type="button"
+    className={styles.deleteButton}
+    aria-label={`Delete ${person.name}, record ${person.id}`}
+    ref={(node) => {
+      if (node) {
+        deleteButtonsRef.current.set(person.id, node);
+      } else {
+        deleteButtonsRef.current.delete(person.id);
+      }
+    }}
+    onClick={() => handleDelete(person.id)}
+  >
+    Delete
+  </button>
+</li>
             ))}
           </ul>
         )}
