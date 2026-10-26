@@ -137,8 +137,6 @@
   }
 }
 
-
-
 .resetRow {
   display: flex;
   justify-content: flex-end;
@@ -181,3 +179,48 @@
   overflow-wrap: anywhere;
 }
 
+.insertForm {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.submitRow {
+  display: flex;
+  align-items: end;
+}
+
+.submitRow button {
+  width: 100%;
+}
+
+.fieldError {
+  margin: 0;
+  color: #fecaca;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.field input[aria-invalid='true'] {
+  border-color: #fca5a5;
+}
+
+@media (min-width: 760px) {
+  .insertForm {
+    grid-template-columns: 2fr 1fr 1fr auto;
+    align-items: start;
+  }
+
+  .submitRow {
+    align-self: end;
+    padding-bottom: 0;
+  }
+
+  .submitRow button {
+    white-space: nowrap;
+  }
+}
+
+.status {
+  overflow-wrap: anywhere;
+}
