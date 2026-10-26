@@ -55,3 +55,229 @@
   font-weight: 700;
 }
 
+/* Shared layout for loading, success and error states */
+
+.panel {
+  min-height: 380px;
+}
+
+.statusMessage {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border: 1px solid #8295af;
+  border-radius: 9px;
+  background: var(--surface);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* Loading: Blue-Zone radar skeleton */
+
+.radarSkeleton {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  min-height: 220px;
+  padding: 20px;
+  border: 1px solid #58b9f3;
+  border-radius: 14px;
+  background: radial-gradient(
+    circle at 30% 50%,
+    #164e79 0,
+    #123456 35%,
+    #081b35 80%
+  );
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.radarSkeleton::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: '';
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(147, 197, 253, 0.25) 50%,
+    transparent 80%
+  );
+  transform: translateX(-120%);
+  animation: radarShimmer 2s ease-in-out infinite;
+}
+
+.radarCircle {
+  width: min(100%, 165px);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  border: 2px solid #93c5fd;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle,
+    transparent 0 18px,
+    rgba(147, 197, 253, 0.28) 19px 20px
+  );
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.35);
+  animation: radarPulse 1.6s ease-in-out infinite;
+}
+
+.skeletonContent {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.skeletonLine,
+.skeletonLineShort {
+  display: block;
+  height: 20px;
+  border-radius: 6px;
+  background: #527da9;
+}
+
+.skeletonLineShort {
+  width: 65%;
+}
+
+@keyframes radarShimmer {
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes radarPulse {
+  50% {
+    opacity: 0.55;
+    transform: scale(0.96);
+  }
+}
+
+/* Successful match data */
+
+.successLabel {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.successCard h2 {
+  margin: 0 0 24px;
+  font-size: clamp(1.5rem, 4vw, 2.3rem);
+  overflow-wrap: anywhere;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.stat {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #8295af;
+  border-radius: 10px;
+  background: var(--pad-background);
+}
+
+.stat dt {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stat dd {
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  overflow-wrap: anywhere;
+}
+
+.explanation {
+  margin-top: 22px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Error alert and retry */
+
+.errorPanel {
+  min-height: 220px;
+  padding: 20px;
+  border: 2px solid #fca5a5;
+  border-radius: 12px;
+  background: #402a37;
+  color: #ffffff;
+}
+
+.errorPanel h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.errorDetail {
+  overflow-wrap: anywhere;
+  color: #fecaca;
+}
+
+.retryButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+  max-width: 100%;
+  margin-top: 12px;
+  padding: 12px 18px;
+  border: 2px solid #ffffff;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #17243d;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: center;
+}
+
+.retryButton:hover {
+  background: #dbeafe;
+}
+
+.retryButton:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+/* Mobile and accessibility */
+
+@media (max-width: 520px) {
+  .radarSkeleton {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .radarCircle {
+    width: min(100%, 110px);
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .retryButton {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radarSkeleton::after,
+  .radarCircle {
+    animation: none;
+  }
+}
