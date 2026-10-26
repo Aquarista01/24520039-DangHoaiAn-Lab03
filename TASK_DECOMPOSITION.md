@@ -211,3 +211,57 @@ its state. No deployment or database was added.
 
 Recorded automated demonstration duration: 24.72 seconds (ffprobe).
 Original seven DrumMachine source files were SHA-checked against the Homework 1 branch and remain identical.
+
+
+---
+
+# Exercise 3 — KRAFTON PUBG Vietnam Series Telemetry
+
+## Planning and Contracts
+- [ ] Review Lab 03 and preserve previous activities.
+- [ ] Define TelemetryData and machine-state contracts.
+- [ ] Define HTTP, abort and simulation behavior.
+- [ ] Define isolated acceptance tests.
+
+## M1 — Four-State Telemetry and Cancellation
+- [ ] Create three local JSON datasets.
+- [ ] Implement abortable telemetry service.
+- [ ] Configure normal failure probability as 35%.
+- [ ] Validate squad ID and response data.
+- [ ] Implement IDLE/LOADING/SUCCESS/ERROR machine.
+- [ ] Use AbortController inside useEffect.
+- [ ] Cancel old requests on squad change/unmount.
+- [ ] Add CES/TE/GE selector with TE default.
+- [ ] Render minimal status/data/error UI.
+- [ ] Verify switching and cleanup.
+
+Commit: feat(ex3): implement PUBG VN 4-state telemetry & AbortController
+
+## M2 — Skeleton, Error and Retry
+- [ ] Add 220px Blue-Zone radar skeleton.
+- [ ] Add loading announcement and aria-busy.
+- [ ] Support prefers-reduced-motion.
+- [ ] Add role=alert error section.
+- [ ] Add Reconnect Satellite button.
+- [ ] Use functional retryTick update.
+- [ ] Preserve selector availability while loading.
+- [ ] Show SUCCESS using semantic article and dl.
+- [ ] Verify focus, contrast and 375px layout.
+- [ ] Verify retry success and repeated errors.
+
+Commit: feat(ex3): add skeleton UI & retry alert
+
+## Final Verification
+- [ ] Verify CES, TE and GE data.
+- [ ] Verify simulated errors and retry.
+- [ ] Verify rapid squad switching and stale-response prevention.
+- [ ] Verify abort during pending HTTP fetch.
+- [ ] Verify abort during simulated delay.
+- [ ] Verify unmount cleanup and StrictMode behavior.
+- [ ] Inspect Chrome Network and React DevTools.
+- [ ] Check mobile 375px and desktop layout.
+- [ ] Check Console, lint and production build.
+- [ ] Record actual test results and remaining issues.
+
+Only mark tests as completed after running them.
+

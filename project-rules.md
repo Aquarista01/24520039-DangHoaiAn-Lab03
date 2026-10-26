@@ -67,3 +67,31 @@
 - Preserve the required Exercise 2 commit sequence.
 - Record only actual AI failures with supporting evidence.
 
+
+
+## Exercise 3 — PUBG VN Live Telemetry
+
+- Preserve Homework 1 and Exercise 2.
+- Use React 19, functional components and StrictMode.
+- Use one state-machine object with IDLE, LOADING,
+  SUCCESS and ERROR states.
+- Define JSDoc contracts before implementation.
+- Use local simulated JSON, not official KRAFTON APIs.
+- Default to The Expendables (TE).
+- Keep a single selected squad state in App.
+- Use AbortController for every telemetry request.
+- Abort previous requests when switching teams or unmounting.
+- Never display stale responses or aborted requests as errors.
+- Use an abortable delay and configurable 35% failure simulation.
+- Do not use independent loading/success/error booleans.
+- Provide semantic, keyboard-accessible UI.
+- Use CSS Modules, custom properties and reduced-motion styles.
+- Display a 220px radar skeleton while loading.
+- Provide an in-page error alert and Retry control.
+- Keep the squad selector usable during loading.
+- Verify Network cancellation only while HTTP is pending.
+- Distinguish actual HTTP requests from simulated delays.
+- Run lint/build and inspect changes before each commit.
+- Use only the two required Exercise 3 implementation commits.
+- Document genuine AI failures only; never invent evidence.
+

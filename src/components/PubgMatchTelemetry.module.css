@@ -1,0 +1,57 @@
+.shell {
+  width: min(100% - 32px, 1080px);
+  margin-inline: auto;
+  padding: 28px 0 64px;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin: 10px 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.header p:last-child {
+  color: var(--muted);
+}
+
+.panel {
+  min-height: 330px;
+  padding: clamp(16px, 3vw, 28px);
+  border: 1px solid #8295af;
+  border-radius: 16px;
+  background: var(--surface);
+  overflow-wrap: anywhere;
+}
+
+.result h2 {
+  margin-top: 0;
+}
+
+.result p {
+  line-height: 1.6;
+}
+
+.error {
+  color: #fecaca;
+  font-weight: 700;
+}
+
+.stateLabel {
+  margin-top: 12px;
+  color: var(--muted);
+  font-weight: 700;
+}
+

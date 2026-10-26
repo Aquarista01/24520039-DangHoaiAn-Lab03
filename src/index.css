@@ -59,3 +59,46 @@ input {
   font-weight: 800;
 }
 
+
+
+.telemetry-activity {
+  min-width: 0;
+}
+
+.telemetry-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  width: min(100% - 32px, 1080px);
+  margin: 22px auto 0;
+  padding: 16px;
+  border: 1px solid #8295af;
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.telemetry-toolbar label {
+  font-weight: 800;
+}
+
+.telemetry-toolbar select {
+  flex: 1 1 250px;
+  min-width: 0;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 2px solid #91a4bd;
+  border-radius: 9px;
+  background: #101827;
+  color: var(--text);
+  font: inherit;
+}
+
+@media (max-width: 450px) {
+  .telemetry-toolbar label,
+  .telemetry-toolbar select {
+    width: 100%;
+    flex-basis: 100%;
+  }
+}
+
