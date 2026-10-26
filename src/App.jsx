@@ -13,7 +13,7 @@ export default function App() {
           aria-pressed={view === 'drum'}
           onClick={() => setView('drum')}
         >
-          Homework 1 — Drum Kit
+          Exercise 1 — Drum Kit
         </button>
 
         <button

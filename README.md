@@ -2,7 +2,7 @@
 
 Đặng Hoài An · 24520039 · Web Application Development
 
-This branch includes Homework 1 (Production Studio Drum Kit) and Exercise 2
+This branch includes Exercise 1 (Production Studio Drum Kit) and Exercise 2
 (Interactive Scientist & Pioneer Directory). Use the activity buttons at the top.
 
 ## Run locally
@@ -37,10 +37,10 @@ No API key, environment file or database is required.
 - IQ values are exercise data, not independently verified measurements.
 - Data is in memory; switching activities remounts them and resets their state.
 
-The branch `ex2-scientist-directory` inherits Homework 1 and has separate planning,
+The branch `ex2-scientist-directory` inherits Exercise 1 and has separate planning,
 data, filtering/sorting, deletion/reset, insertion and final-verification commits.
 
-## Homework 1
+## Exercise 1
 
 The original DrumMachine source and seven Lab 1 sounds are preserved. Click/tap pads
 or use W/A/S/D/J/K/L. Enter/Space activate focused buttons; typing in the test field
@@ -51,7 +51,7 @@ does not trigger shortcuts. A checkbox disables character shortcuts.
 - `TASK_DECOMPOSITION.md`: per-milestone acceptance tests and actual outcomes.
 - `verification/ex2-profiler.json`: real React Profiler API events for one search update.
 - `verification/ex2-demo.mp4`: short, actual automated browser demonstration.
-- `verification/lighthouse-results.json`: earlier Homework 1 measurements, not an Exercise 2 audit.
+- `verification/lighthouse-results.json`: earlier Exercise 1 measurements, not an Exercise 2 audit.
 - `AI_FAILURE_AUDIT.md`: actual defects caught and corrected during implementation.
 
 Chrome React DevTools Components/Profiler tab screenshots remain to be captured on Windows.
