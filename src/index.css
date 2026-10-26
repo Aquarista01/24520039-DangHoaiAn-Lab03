@@ -33,3 +33,29 @@ input {
   outline: 3px solid var(--focus);
   outline-offset: 3px;
 }
+
+
+.lab-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px;
+  border-bottom: 1px solid #8295af;
+}
+
+.lab-switcher button {
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 2px solid #8295af;
+  border-radius: 9px;
+  background: var(--pad-background);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.lab-switcher button[aria-pressed="true"] {
+  border-color: var(--focus);
+  background: #164e63;
+  font-weight: 800;
+}
+

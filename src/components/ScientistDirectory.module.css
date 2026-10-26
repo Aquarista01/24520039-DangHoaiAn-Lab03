@@ -1,0 +1,139 @@
+.shell {
+  width: min(100% - 32px, 1120px);
+  margin-inline: auto;
+  padding: 40px 0 72px;
+}
+
+.header {
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin: 12px 0;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.header > p:last-child {
+  color: var(--muted);
+}
+
+.panel {
+  min-width: 0;
+  margin-bottom: 20px;
+  padding: clamp(16px, 3vw, 28px);
+  background: var(--surface);
+  border: 1px solid #8295af;
+  border-radius: 16px;
+}
+
+.panel h2 {
+  margin: 0 0 20px;
+  font-size: 1.4rem;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.field label {
+  font-weight: 700;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 2px solid #91a4bd;
+  border-radius: 9px;
+  background: #101827;
+  color: var(--text);
+  font: inherit;
+}
+
+.field input::placeholder {
+  color: #c0ccde;
+}
+
+.status {
+  display: block;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border-radius: 9px;
+  background: #253653;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.peopleList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.personCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #8295af;
+  border-radius: 12px;
+  background: var(--pad-background);
+}
+
+.personDetails {
+  min-width: 0;
+}
+
+.personDetails h3 {
+  margin: 0 0 12px;
+  overflow-wrap: anywhere;
+}
+
+.personDetails p {
+  margin: 5px 0;
+}
+
+.empty {
+  padding: 20px;
+  border: 1px dashed #91a4bd;
+  border-radius: 10px;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 760px) {
+  .controls {
+    grid-template-columns: 2fr 1fr 1.3fr;
+  }
+
+  .peopleList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
