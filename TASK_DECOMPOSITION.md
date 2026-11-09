@@ -179,3 +179,12 @@ Lighthouse was run in Chrome against the Vite production preview.
 - [x] Verify sorting by WWCD, Placement Points, and Kill Points.
 - [x] Verify team filtering and the empty feed state.
 - [x] Verify filter labels, keyboard focus, and the 375px layout.
+
+### M4 — Production Verification and Submission Evidence
+
+- [x] Verify countdown resynchronization after switching tabs.
+- [x] Capture claim success, pending stock, and mock 409 rollback.
+- [x] Capture leaderboard sorting, team filtering, and the empty feed state.
+- [x] Verify the 375px layout and keyboard focus on production preview.
+- [x] Verify lint, build, and all three homework entry pages.
+- [x] Review the AI failure audit, Git log, and shared conversation link.
