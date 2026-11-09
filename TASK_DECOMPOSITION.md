@@ -48,14 +48,14 @@ Acceptance: checks are completed and documented.
 
 ## M2 Follow-up — Pad Release Contract
 
-- [ ] A mapped keydown plays one sound and adds one history entry.
-- [ ] A shortcut pad stays pressed until its matching keyup or window blur.
-- [ ] Releasing one shortcut leaves other held pads pressed.
-- [ ] Repeated keydown events and editable targets do not trigger shortcuts.
-- [ ] Disabling shortcuts clears held pads.
-- [ ] Click, tap, Enter and Space use the same button activation path.
-- [ ] Holding Enter or Space does not add repeat hits.
-- [ ] The visual meter shows a short illustrative pulse for each hit.
+- [x] A mapped keydown plays one sound and adds one history entry.
+- [x] A shortcut pad stays pressed until its matching keyup or window blur.
+- [x] Releasing one shortcut leaves other held pads pressed.
+- [x] Repeated keydown events and editable targets do not trigger shortcuts.
+- [x] Disabling shortcuts clears held pads.
+- [x] Click, tap, Enter and Space use the same button activation path.
+- [x] Holding Enter or Space does not add repeat hits.
+- [x] The visual meter shows a short illustrative pulse for each hit.
 
 Verification: test rapid release, two simultaneous shortcuts, window blur,
 editable focus, and native button activation. Re-run production checks.
