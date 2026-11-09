@@ -1,23 +1,19 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 /**
- * Activates mapped pads using physical keyboard codes.
+ * Triggers mapped pads once per physical key press and releases them on keyup.
  *
  * @param {ReadonlyMap<string, string>} padMap
- * @param {(padId: string) => void} onTriggerPad
+ * @param {import('./contracts.js').TriggerPad} onTriggerPad
+ * @param {(padId: string) => void} onReleasePad
  * @param {boolean} [isEnabled=true]
  */
 export function useDrumKeyboard(
   padMap,
   onTriggerPad,
+  onReleasePad,
   isEnabled = true
 ) {
-  const callbackRef = useRef(onTriggerPad);
-
-  useEffect(() => {
-    callbackRef.current = onTriggerPad;
-  }, [onTriggerPad]);
-
   useEffect(() => {
     if (!isEnabled) return;
 
@@ -26,9 +22,7 @@ export function useDrumKeyboard(
     function isEditable(target) {
       return target instanceof Element && (
         target.isContentEditable ||
-        target.closest(
-          'input, textarea, select, [role="textbox"]'
-        ) !== null
+        target.closest('input, textarea, select, [role="textbox"]') !== null
       );
     }
 
@@ -46,19 +40,18 @@ export function useDrumKeyboard(
       }
 
       const padId = padMap.get(event.code);
-
-      if (!padId) return;
-      if (isEditable(event.target)) return;
-      if (heldKeys.has(event.code)) return;
+      if (!padId || isEditable(event.target) || heldKeys.has(event.code)) return;
 
       event.preventDefault();
-
       heldKeys.add(event.code);
-      callbackRef.current(padId);
+      onTriggerPad(padId, 'keyboard');
     }
 
     function handleKeyUp(event) {
-      heldKeys.delete(event.code);
+      if (!heldKeys.delete(event.code)) return;
+
+      const padId = padMap.get(event.code);
+      if (padId) onReleasePad(padId);
     }
 
     function handleBlur() {
@@ -75,5 +68,5 @@ export function useDrumKeyboard(
       window.removeEventListener('blur', handleBlur);
       heldKeys.clear();
     };
-  }, [padMap, isEnabled]);
+  }, [padMap, onTriggerPad, onReleasePad, isEnabled]);
 }

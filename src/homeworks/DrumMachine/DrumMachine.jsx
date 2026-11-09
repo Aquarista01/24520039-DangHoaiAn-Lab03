@@ -14,14 +14,15 @@ import styles from './DrumMachine.module.css';
 export default function DrumMachine() {
   const { play, error } = useDrumAudio();
 
-  const [activeId, setActiveId] = useState(null);
+  const [hitFlash, setHitFlash] = useState(null);
+  const [heldPadIds, setHeldPadIds] = useState(() => new Set());
   const timerRef = useRef(null);
   const [history, setHistory] = useState([]);
   const hitSequenceRef = useRef(0);
   const typingTestId = useId();
   const [shortcutsEnabled, setShortcutsEnabled] = useState(true);
 
-  const triggerPad = useCallback((id) => {
+  const triggerPad = useCallback((id, source = 'button') => {
     const pad = PAD_BY_ID.get(id);
     if (!pad) return;
 
@@ -36,27 +37,38 @@ export default function DrumMachine() {
       },
       ...previous,
     ].slice(0, 6));
-    setActiveId(id);
+
+    if (source === 'keyboard') {
+      setHeldPadIds((previous) => new Set(previous).add(id));
+    }
+    setHitFlash({ id, source });
 
     window.clearTimeout(timerRef.current);
-
     timerRef.current = window.setTimeout(() => {
-      setActiveId(null);
+      setHitFlash(null);
       timerRef.current = null;
     }, 160);
   }, [play]);
 
-  useDrumKeyboard(PAD_BY_CODE, triggerPad, shortcutsEnabled);
+  const releasePad = useCallback((id) => {
+    setHeldPadIds((previous) => {
+      const next = new Set(previous);
+      next.delete(id);
+      return next;
+    });
+  }, []);
 
-  const activePad = PAD_BY_ID.get(activeId);
-  const meterLevel = activePad?.illustrativeLevel ?? 0;
+  useDrumKeyboard(PAD_BY_CODE, triggerPad, releasePad, shortcutsEnabled);
+
+  const meterLevel = PAD_BY_ID.get(hitFlash?.id)?.illustrativeLevel ?? 0;
   const latestHit = history[0];
 
   useEffect(() => {
     function handleBlur() {
       window.clearTimeout(timerRef.current);
       timerRef.current = null;
-      setActiveId(null);
+      setHitFlash(null);
+      setHeldPadIds(new Set());
     }
 
     window.addEventListener('blur', handleBlur);
@@ -85,7 +97,11 @@ export default function DrumMachine() {
 
         <label className={styles.shortcutToggle}>
           <input type="checkbox" checked={shortcutsEnabled}
-            onChange={(event) => setShortcutsEnabled(event.target.checked)} />
+            onChange={(event) => {
+              const enabled = event.target.checked;
+              setShortcutsEnabled(enabled);
+              if (!enabled) setHeldPadIds(new Set());
+            }} />
           Enable keyboard shortcuts (W, A, S, D, J, K, L)
         </label>
 
@@ -97,7 +113,9 @@ export default function DrumMachine() {
               <DrumPad
                 key={pad.id}
                 pad={pad}
-                isActive={activeId === pad.id}
+                isActive={heldPadIds.has(pad.id) || (
+                  hitFlash?.source === 'button' && hitFlash.id === pad.id
+                )}
                 onTrigger={triggerPad}
               />
             ))}

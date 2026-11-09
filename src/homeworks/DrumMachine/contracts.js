@@ -11,6 +11,7 @@
 /**
  * @callback TriggerPad
  * @param {string} padId Stable pad identifier.
+ * @param {'button' | 'keyboard'} [source] How the pad was activated.
  * @returns {void}
  */
 
@@ -25,6 +26,7 @@
  * @callback DrumKeyboardHook
  * @param {ReadonlyMap<string, string>} padMap
  * @param {TriggerPad} onTriggerPad
+ * @param {(padId: string) => void} onReleasePad
  * @param {boolean} [isEnabled]
  * @returns {void}
  */

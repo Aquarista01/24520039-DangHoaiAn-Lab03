@@ -15,6 +15,11 @@ export default function DrumPad({
         className={`${styles.pad} ${isActive ? styles.active : ''}`}
         aria-pressed={isActive}
         aria-keyshortcuts={pad.keyLabel.toLowerCase()}
+        onKeyDown={(event) => {
+          if (event.repeat && (event.key === 'Enter' || event.key === ' ')) {
+            event.preventDefault();
+          }
+        }}
         onClick={() => onTrigger(pad.id)}
       >
         <kbd className={styles.padKey}>{pad.keyLabel}</kbd>
