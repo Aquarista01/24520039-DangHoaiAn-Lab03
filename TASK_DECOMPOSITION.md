@@ -136,3 +136,23 @@ Lighthouse was run in Chrome against the Vite production preview.
 - [x] Verify A0 = MIDI 21, A4 = MIDI 69 and 440 Hz, and C8 = MIDI 108.
 - [x] Render each note as a button with its MIDI value as the React key.
 - [x] Verify visible focus, pressed state, and keyboard access at 375px.
+
+### M2 — Web Audio
+
+- Chord and independent release: Passed in reference Chromium. Two notes were held together, and releasing one left the other active. Audible playback on Windows is pending.
+- Ninth note steals the oldest held voice: Passed in reference Chromium. The ninth note released A0, the oldest held note, and the other eight voices stayed active.
+- Window blur releases active voices: Passed in reference Chromium. A simulated window blur cleared the remaining active voice.
+
+### M3 — FIFO Sequencer
+
+- Recorded notes replay in start order with overlap: Passed. The scheduler started the second note while the first was still active.
+- Playback at 0.5x, 1x, and 2x: Passed in automated tests. All three speeds scaled both the gap between note starts and the held duration.
+- Stop cancels pending notes and preserves the recording: Passed in reference Chromium. After Stop, the pending note did not start, and the same recording could be played again.
+
+### M4 — Verification
+
+- Generated keys: 88 total, 52 white, 36 black.
+- Piano scroll and page overflow at 375px: Passed in reference Chromium. The piano scrolled from A0 to C8 within its container without horizontal page overflow.
+- React DevTools Profiler, PianoKey renders on press: Pending on Windows. Reference render instrumentation showed that only the A0 PianoKey updated on press.
+- React DevTools Profiler, PianoKey renders on release: Pending on Windows. Reference render instrumentation showed that only the A0 PianoKey updated on release.
+- Lint and production build: Both passed on the reference implementation.

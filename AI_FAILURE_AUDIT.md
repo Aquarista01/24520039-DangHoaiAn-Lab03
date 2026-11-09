@@ -18,3 +18,10 @@ Correction commit: `fix(hw1): align pad names and provide crawl rules`.
 
 ## Audit environment correction
 The first Mobile Performance run had `NO_SCREENSHOTS`, so its displayed score was not accepted as a valid measurement. Removing Chromium's `--single-process` launch flag allowed a complete run. Browser security-disabling launch flags were also excluded from the final Lighthouse runs. The final reports contain measured results, not substituted scores.
+
+## Homework 2 — Focused white key overlapped a black key
+
+- Reproduction: Focus A0 and inspect the left side of the adjacent A#0 key.
+- Evidence: In the draft Chromium build, `document.elementFromPoint` inside the overlapping area returned A0 instead of A#0.
+- Fix: Keep the white key's inset focus outline and raise only the focused black key.
+- Verification: The corrected Chromium build returned A#0 at the same point while A0 retained a visible outline.
