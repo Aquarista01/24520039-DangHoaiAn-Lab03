@@ -166,3 +166,10 @@ Lighthouse was run in Chrome against the Vite production preview.
 - [x] Verify Claim is available only during an in-stock live drop.
 - [x] Verify countdown resynchronization after returning to the tab.
 - [x] Verify keyboard focus, the 375px layout, lint, and production build.
+
+### M2 — Optimistic Claim and Conflict Rollback
+
+- [x] Verify success, 409 rollback, and service error rollback.
+- [x] Verify rapid clicks create only one claim per pending item.
+- [x] Verify a lost response retries with the same claim ID.
+- [x] Verify confirmed stock and sold-out behavior.
