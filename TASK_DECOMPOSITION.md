@@ -25,7 +25,7 @@ Acceptance: all seven pads play the correct sounds.
 - [x] Implement useDrumKeyboard.
 - [x] Use event.code with KeyW/A/S/D/J/K/L.
 - [x] Ignore repeat, modifiers and editable targets.
-- [x] Preserve native Enter/Space behavior.
+- [x] Preserve native Enter/Space behavior.q
 - [x] Implement keyup and blur handling.
 - [x] Clean up listeners.
 Acceptance: all seven shortcuts work without duplication.
@@ -45,6 +45,20 @@ Acceptance: accessible feedback works for every hit.
 - [x] Run production Lighthouse audits.
 - [x] Record actual results and remaining issues.
 Acceptance: checks are completed and documented.
+
+## M2 Follow-up — Pad Release Contract
+
+- [ ] A mapped keydown plays one sound and adds one history entry.
+- [ ] A shortcut pad stays pressed until its matching keyup or window blur.
+- [ ] Releasing one shortcut leaves other held pads pressed.
+- [ ] Repeated keydown events and editable targets do not trigger shortcuts.
+- [ ] Disabling shortcuts clears held pads.
+- [ ] Click, tap, Enter and Space use the same button activation path.
+- [ ] Holding Enter or Space does not add repeat hits.
+- [ ] The visual meter shows a short illustrative pulse for each hit.
+
+Verification: test rapid release, two simultaneous shortcuts, window blur,
+editable focus, and native button activation. Re-run production checks.
 
 ## Git Policy
 - One focused commit per verified milestone.
@@ -100,3 +114,14 @@ can change the results. These are not Vercel or Windows Chrome results.
 4. Repeat keyboard, touch, focus, typing suppression and audio tests.
 
 The correction audit is recorded in `AI_FAILURE_AUDIT.md`.
+
+## Follow-up Verification — Windows
+
+Lighthouse was run in Chrome against the Vite production preview.
+
+| Lighthouse category | Mobile | Desktop |
+| --- | ---: | ---: |
+| Performance | 100 | 100 |
+| Accessibility | 100 | 100 |
+| Best Practices | 100 | 100 |
+| SEO | 100 | 100 |
