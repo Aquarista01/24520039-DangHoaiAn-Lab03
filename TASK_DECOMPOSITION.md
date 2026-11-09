@@ -173,3 +173,9 @@ Lighthouse was run in Chrome against the Vite production preview.
 - [x] Verify rapid clicks create only one claim per pending item.
 - [x] Verify a lost response retries with the same claim ID.
 - [x] Verify confirmed stock and sold-out behavior.
+
+### M3 — Championship Leaderboard and Kill Feed
+
+- [x] Verify sorting by WWCD, Placement Points, and Kill Points.
+- [x] Verify team filtering and the empty feed state.
+- [x] Verify filter labels, keyboard focus, and the 375px layout.

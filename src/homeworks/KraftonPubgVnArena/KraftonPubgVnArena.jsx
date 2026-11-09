@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { createMockClaimApi } from './mockClaimApi.js';
+import TournamentPanels from './TournamentPanels.jsx';
 import { usePubgAirdropTimer } from './usePubgAirdropTimer.js';
 import styles from './arena.module.css';
 
@@ -208,6 +209,7 @@ export default function KraftonPubgVnArena() {
           />
         ))}
       </section>
+      <TournamentPanels />
     </main>
   );
 }
