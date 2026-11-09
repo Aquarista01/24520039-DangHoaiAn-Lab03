@@ -1,0 +1,107 @@
+:global(*) {
+  box-sizing: border-box;
+}
+
+:global(body) {
+  margin: 0;
+  background: #121826;
+  color: #f5f7ff;
+  font: 1rem / 1.55 system-ui, sans-serif;
+}
+
+.page {
+  max-width: 84rem;
+  margin-inline: auto;
+  padding: clamp(0.875rem, 4vw, 2.5rem);
+}
+
+.page h1,
+.page h2 {
+  margin-block: 0 0.5rem;
+  line-height: 1.2;
+}
+
+.eyebrow {
+  margin-bottom: 0.375rem;
+  color: #9fddff;
+}
+
+.panel {
+  min-width: 0;
+  margin-top: 1rem;
+  padding: clamp(0.75rem, 3vw, 1.25rem);
+  border: 1px solid #5d728e;
+  border-radius: 0.75rem;
+  background: #1c2637;
+}
+
+.scroller {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0.25rem;
+  border: 1px solid #8293ae;
+  border-radius: 0.4rem;
+}
+
+.keyboard {
+  --white-width: 2.625rem;
+  position: relative;
+  width: calc(var(--white-count) * var(--white-width));
+  height: 12rem;
+}
+
+.whiteKey,
+.blackKey {
+  position: absolute;
+  top: 0;
+  left: calc(var(--key-position) * var(--white-width));
+  display: grid;
+  align-content: end;
+  justify-content: center;
+  padding: 0 0 0.55rem;
+  border-radius: 0 0 0.35rem 0.35rem;
+  cursor: pointer;
+  font: 600 0.75rem system-ui, sans-serif;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.whiteKey {
+  width: var(--white-width);
+  height: 100%;
+  border: 1px solid #46536b;
+  background: #fff;
+  color: #182132;
+}
+
+.blackKey {
+  z-index: 1;
+  width: 1.625rem;
+  height: 63%;
+  transform: translateX(-50%);
+  border: 1px solid #667894;
+  background: #222d40;
+  color: #fff;
+}
+
+.whiteKey[aria-pressed='true'],
+.blackKey[aria-pressed='true'] {
+  background: #9fddff;
+  color: #122134;
+  box-shadow: inset 0 -0.375rem #15537d;
+}
+
+.whiteKey:focus-visible,
+.blackKey:focus-visible {
+  outline: 3px solid #a23700;
+  outline-offset: -4px;
+}
+
+.blackKey:focus-visible {
+  z-index: 2;
+  outline-color: #ffbc7d;
+}
+
+.blackKey[aria-pressed='true']:focus-visible {
+  outline-color: #a23700;
+}

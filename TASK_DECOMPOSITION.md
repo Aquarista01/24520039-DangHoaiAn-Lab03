@@ -125,3 +125,14 @@ Lighthouse was run in Chrome against the Vite production preview.
 | Accessibility | 100 | 100 |
 | Best Practices | 100 | 100 |
 | SEO | 100 | 100 |
+
+## Lab 03 Homework 2 — 88-Key Polyphonic Piano & Concurrent FIFO Sequencer
+
+### M1 — Piano Note Data and Keyboard UI
+
+- [x] Generate notes in ascending MIDI order from 21 (A0) through 108 (C8).
+- [x] Derive the note name, octave, key type, and frequency from MIDI.
+- [x] Verify 88 notes total: 52 white keys and 36 black keys.
+- [x] Verify A0 = MIDI 21, A4 = MIDI 69 and 440 Hz, and C8 = MIDI 108.
+- [x] Render each note as a button with its MIDI value as the React key.
+- [x] Verify visible focus, pressed state, and keyboard access at 375px.
