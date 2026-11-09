@@ -1,0 +1,74 @@
+:global(body) {
+  margin: 0;
+  background: #10151c;
+  color: #f5f7fa;
+  font: 1rem / 1.55 system-ui, sans-serif;
+}
+
+.page {
+  max-width: 64rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 2.5rem);
+}
+
+.page h1,
+.page h2 {
+  line-height: 1.2;
+}
+
+.eyebrow {
+  color: #ffd166;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #66717d;
+  border-radius: 0.75rem;
+  background: #1a232e;
+}
+
+.status {
+  color: #dce6ee;
+  font-weight: 700;
+}
+
+.status[data-status='AIRDROP_LIVE'] {
+  color: #ffd166;
+}
+
+.clock {
+  font-variant-numeric: tabular-nums;
+}
+
+.button {
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+  background: #ffd166;
+  color: #16191f;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button:disabled {
+  border-color: #66717d;
+  background: #26313d;
+  color: #dce6ee;
+  cursor: not-allowed;
+}
+
+.button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}

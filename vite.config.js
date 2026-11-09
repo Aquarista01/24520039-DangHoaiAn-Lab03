@@ -9,6 +9,7 @@ export default defineConfig({
       input: {
         drum: fileURLToPath(new URL('./index.html', import.meta.url)),
         piano: fileURLToPath(new URL('./piano.html', import.meta.url)),
+        arena: fileURLToPath(new URL('./arena.html', import.meta.url)),
       },
     },
   },

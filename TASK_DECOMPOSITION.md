@@ -156,3 +156,13 @@ Lighthouse was run in Chrome against the Vite production preview.
 - React DevTools Profiler, PianoKey renders on press: Pending on Windows. Reference render instrumentation showed that only the A0 PianoKey updated on press.
 - React DevTools Profiler, PianoKey renders on release: Pending on Windows. Reference render instrumentation showed that only the A0 PianoKey updated on release.
 - Lint and production build: Both passed on the reference implementation.
+
+## Lab 03 Homework 3 — KRAFTON × PUBG Vietnam Championship & Airdrop Arena
+
+### M1 — Airdrop Countdown and Status
+
+- [x] Verify demo item prices, stock, and opening and closing deadlines.
+- [x] Verify WARMUP, AIRDROP_LIVE, LOOTED_OUT, and EXPIRED.
+- [x] Verify Claim is available only during an in-stock live drop.
+- [x] Verify countdown resynchronization after returning to the tab.
+- [x] Verify keyboard focus, the 375px layout, lint, and production build.
